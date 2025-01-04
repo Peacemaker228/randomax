@@ -18,7 +18,7 @@
     align-items: center; 
     background: #FFFFFF26;
     padding: 10px 80px;
-    position: sticky;
+    position: unset;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     top: 0;

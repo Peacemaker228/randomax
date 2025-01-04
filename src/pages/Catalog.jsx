@@ -5,11 +5,12 @@ import manCenter from '../assets/image_2025-01-04_03-58-56.png'
 import manLeft from '../assets/image_2025-01-04_03-58-39.png'
 import background_1 from '../assets/image_2025-01-03_17-16-15.png'
 import background_2 from '../assets/background2.png'
-import sparks_1 from '../assets/sparks.png'
+import sparks_1 from '../assets/sparks2.png'
 import man_1 from '../assets/mim.png'
 import man_2 from '../assets/man_buttom.png'
 import PhotoCard from '../components/PhotoCard'
-
+import useWindowWidth from '../hooks/useWindowWidth'; 
+import { useState } from 'react';
 
 
 function chunkArray(array, size) {
@@ -21,6 +22,12 @@ function chunkArray(array, size) {
 }
 
 function Catalog() {
+  const windowWidth = useWindowWidth();
+  const isMobile = windowWidth <= 768; 
+  
+  const [showAll, setShowAll] = useState(false);
+
+
   const products = [
     { id: 1, title: 'Чёрный плащ',      price: 4999, oldPrice: 6000, image: '/images/cloak.png' },
     { id: 2, title: 'Кольцо с шипами',  price: 999,  oldPrice: 6000, image: '/images/cloak.png' },
@@ -36,7 +43,10 @@ function Catalog() {
     { id: 13, title: 'Бандана "Череп"',    price: 499,                    image: '/images/cloak.png' },
   ]
 
-  const productGroups = chunkArray(products, 7)
+  const displayedProducts = isMobile && !showAll ? products.slice(0, 5) : products;
+  const shouldShowButton = isMobile && products.length > 5;
+
+  const productGroups = chunkArray(displayedProducts, 7)
 
   const images = [
     {id: 1, image: '/images/cloak.png'  },
@@ -44,8 +54,14 @@ function Catalog() {
     {id: 3, image: '/images/cloak.png'  },
     {id: 4, image: '/images/cloak.png'  },
     {id: 5, image: '/images/cloak.png'  },
+    {id: 6, image: '/images/cloak.png'  },
+    {id: 7, image: '/images/cloak.png'  },
 
   ]
+
+  const handleViewAll = () => {
+    setShowAll(true);
+  };
 
   return (
     <div>
@@ -64,6 +80,7 @@ function Catalog() {
       <div className='catalog'>
         <div className='back-elements-catalog'>
           <img src={background_1} alt="" className='background-1-catalog' />
+          <img src={background_1} alt="" className='background-2-catalog' />
         </div>
         <div className='catalog-title'>
           <p>ТОВАРЫ</p>
@@ -117,6 +134,13 @@ function Catalog() {
               )}
             </div>
           ))}
+          {shouldShowButton && !showAll && (
+            <div className="view-all-button-container">
+              <button className="view-all-button" onClick={handleViewAll}>
+                СМОТРЕТЬ ВСЕ
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -130,11 +154,13 @@ function Catalog() {
             <img src={sparks_1} alt="" className='sparks-1-gallery' />
             <img src={background_2} alt="" className='background-1-gallery' />
           </div>
-          {images.map(image => (
-            <PhotoCard
-              key={image.id}
-              image={image.image}
-            />
+          {images.map((image, index) => (
+            <div key={image.id} className={`photo-${index}`}> 
+              <PhotoCard
+                key={image.id}
+                image={image.image}
+              />
+            </div>
           ))}
         </div>
       </div>

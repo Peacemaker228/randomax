@@ -28,6 +28,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
+
 }
 
 .button-label {
@@ -43,14 +44,15 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 150px;
 }
 
 .background-element-1 {
     position: absolute;
     width: 1525px;
     height: 952.81px;
-    left: -110vh;
-    top: -40vh;
+    left: -35%;
+    top: 0;
     gap: 0px;
     z-index: -1;
     opacity: 0px;
@@ -60,8 +62,8 @@
     position: absolute;
     width: 1525px;
     height: 952.81px;
-    left: -62vh;
-    top: -45vh;
+    left: 5%;
+    top: 0;
     opacity: 0px;
     gap: 0px;
     z-index: -2;
@@ -71,10 +73,8 @@
     position: absolute;
     width: 481.81px;
     height: 723px;
-    left: 20vh;
-    gap: 0px;
-    top: -35vh;
-    opacity: 0px;
+    left: 60%;
+    top: -10%;
     z-index: 0;
 }
 
@@ -82,8 +82,8 @@
     position: absolute;
     width: 717.97px;
     height: 795px;
-    top: -40vh;
-    left: -45vh;
+    top: -20%;
+    left: 21%;
     gap: 0px;
     opacity: 0px;
     z-index: -5;
@@ -93,13 +93,17 @@
     position: absolute;
     width: 571.39px;
     height: 620px;
-    left: -80vh;
-    top: -25vh;
+    left: 0;
+    top: 0;
     z-index: 1;
 }
 
 .background-elements {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 @media (max-width: 768px) {
