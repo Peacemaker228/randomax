@@ -4,9 +4,11 @@ import manRight from '../assets/image_2025-01-04_03-59-03.png'
 import manCenter from '../assets/image_2025-01-04_03-58-56.png'
 import manLeft from '../assets/image_2025-01-04_03-58-39.png'
 import background_1 from '../assets/image_2025-01-03_17-16-15.png'
+import background_2 from '../assets/background2.png'
 import sparks_1 from '../assets/sparks.png'
 import man_1 from '../assets/mim.png'
 import man_2 from '../assets/man_buttom.png'
+import PhotoCard from '../components/PhotoCard'
 
 
 
@@ -35,6 +37,15 @@ function Catalog() {
   ]
 
   const productGroups = chunkArray(products, 7)
+
+  const images = [
+    {id: 1, image: '/images/cloak.png'  },
+    {id: 2, image: '/images/cloak.png'  },
+    {id: 3, image: '/images/cloak.png'  },
+    {id: 4, image: '/images/cloak.png'  },
+    {id: 5, image: '/images/cloak.png'  },
+
+  ]
 
   return (
     <div>
@@ -113,8 +124,17 @@ function Catalog() {
         <div className='gallery-title'>
           <p>ФОТОГАЛЕРЕЯ</p>
         </div>
-        <div className='gallery-photos'>
-          
+        <div className="gallery-photos">
+          <div className='grid-container-background'>
+            <img src={sparks_1} alt="" className='sparks-1-gallery' />
+            <img src={background_2} alt="" className='background-1-gallery' />
+          </div>
+          {images.map(image => (
+            <PhotoCard
+              key={image.id}
+              image={image.image}
+            />
+          ))}
         </div>
       </div>
     </div>

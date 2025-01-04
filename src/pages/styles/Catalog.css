@@ -181,7 +181,8 @@
     grid-template-columns: repeat(3, 1fr); 
     grid-template-rows: auto auto auto;     
     gap: 20px;         
-    position: relative;                    
+    position: relative;                   
+     
     grid-template-areas:
       "slot1 slot2 slot3"
       ".     slot4 slot5"
@@ -195,3 +196,75 @@
 .slot5 { grid-area: slot5; }
 .slot6 { grid-area: slot6; }
 .slot7 { grid-area: slot7; }
+
+.gallery-photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 10px; 
+    grid-auto-rows: 300px;
+    position: relative;       
+
+}
+  
+.gallery {
+    padding-bottom: 80px;
+}
+
+.photo-card {
+    overflow: hidden;
+    position: relative;
+}
+  
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.photo-1 {
+    grid-column: span 1;
+    grid-row: span 1;   
+}
+  
+.photo-2 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+  
+.photo-3 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+  
+.photo-4 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+  
+.photo-5 {
+    grid-column: span 1;
+    grid-row: span 1; 
+}
+  
+.photo-6, .photo-7, .photo-8 {
+    grid-column: span 4;
+    grid-row: span 4;
+}
+
+.background-1-gallery {
+    position: absolute;
+    width: 1525px;
+    height: 952.81px;
+    top: -20%;
+    opacity: 0.5;
+    z-index: -5;
+}
+
+.sparks-1-gallery {
+    position: absolute;
+    width: 658px;
+    left: -20%;
+    top: 30%;
+    height: 439px;
+    transform: rotate(26deg);
+}

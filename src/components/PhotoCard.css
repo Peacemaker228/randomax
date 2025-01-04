@@ -1,0 +1,21 @@
+.photo-card {
+    background: #1b1b1b;
+    border: 1px solid rgba(39, 36, 43, 1);
+    border-radius: 20px;
+    transition: transform 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+  
+.photo-card:hover {
+    transform: translateY(-5px);
+}
+  
+.photo-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
