@@ -1,0 +1,97 @@
+.card {
+    background: #FFFFFF26;
+    border-radius: 20px; 
+    transition: transform 0.3s;
+    text-align: center;
+    width: 100%;
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.link {
+    color: #ccc; 
+    text-decoration: none; 
+}
+
+.product-image {
+    width: 100%; 
+    height: auto; 
+    border: 1px solid #fff; 
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.product-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    background: #fff; 
+    color: #000; 
+    border: none; 
+    height: 54px;
+    padding: 10px 20px; 
+    border-radius: 20px;
+    cursor: pointer; 
+    box-sizing: border-box; 
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+}
+
+.button:hover {
+    background: #f4f4f4; 
+    color: #000; 
+}
+
+.product-info {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+    gap: 10px; 
+}
+
+.old-price {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1.6px;
+    text-align: left;
+    text-decoration-line: line-through;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.product-title {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    
+}
+
+.product-prices {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+    gap: 12px; 
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 20px;
+    letter-spacing: 1.60px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+}

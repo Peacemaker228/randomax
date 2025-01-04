@@ -1,0 +1,159 @@
+.home {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 775px;
+    overflow: hidden;
+}
+
+.catalog-label {
+    font-family: Inter;
+    font-size: 96px;
+    font-weight: 400;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FFFFFF;
+    z-index: 1;
+}
+
+.open-catalog {
+    border-radius: 20px;
+    background: #FFFFFF;
+    display: flex;
+    height: 54px;
+    width: 373px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.button-label {
+    color: black;
+    align-self: center;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 400;
+    margin: 10px;
+}
+
+.home-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.background-element-1 {
+    position: absolute;
+    width: 1525px;
+    height: 952.81px;
+    left: -110vh;
+    top: -40vh;
+    gap: 0px;
+    z-index: -1;
+    opacity: 0px;
+}
+
+.background-element-2 {
+    position: absolute;
+    width: 1525px;
+    height: 952.81px;
+    left: -62vh;
+    top: -45vh;
+    opacity: 0px;
+    gap: 0px;
+    z-index: -2;
+}
+
+.man-right {
+    position: absolute;
+    width: 481.81px;
+    height: 723px;
+    left: 20vh;
+    gap: 0px;
+    top: -35vh;
+    opacity: 0px;
+    z-index: 0;
+}
+
+.man-center {
+    position: absolute;
+    width: 717.97px;
+    height: 795px;
+    top: -40vh;
+    left: -45vh;
+    gap: 0px;
+    opacity: 0px;
+    z-index: -5;
+}
+
+.man-left {
+    position: absolute;
+    width: 571.39px;
+    height: 620px;
+    left: -80vh;
+    top: -25vh;
+    z-index: 1;
+}
+
+.background-elements {
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .catalog-label {
+        font-family: Inter;
+        font-size: 55px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    }
+
+    .home {
+        height: 600px;
+        overflow: hidden;
+    }
+    
+    .home-content {
+        margin-top: -10vw;
+        display: flex;
+        gap: 50px;
+    }
+    
+    .open-catalog {
+        height: 7vh;
+        width: 45vh;
+    }
+
+    .background-element-1, .background-element-2 {
+        display: none;
+    }
+
+    .man-right {
+        width: 300px;
+        height: 450px;
+        left: -15vw;
+        top: -65vw;
+        z-index: -3;
+    }
+
+    .man-center {
+        width: 400px;
+        height: 450px;
+        top: -10vw;
+        left: -80vw;
+        z-index: -2;
+    }
+
+    .man-left {
+        width: 330px;
+        height: 360px;
+        left: -70vw;
+        top: -60vw;
+        z-index: -1;
+    }
+}
