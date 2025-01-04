@@ -1,9 +1,14 @@
+import { useLocation} from 'react-router-dom'
 import './Footer.css'
 
 
 function Footer() {
+  const location = useLocation();
+  
+  const isCatalogPage = location.pathname === '/catalog';
+
   return (
-    <footer className='footer'>
+    <footer className={`footer ${isCatalogPage ? 'footer--catalog' : ''}`}>
       <div className='contacts-footer'>
         <p className='contacts'>КОНТАКТЫ</p>
         <p className='email'>wiarkshop@mail.ru</p>

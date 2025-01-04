@@ -95,6 +95,7 @@
     left: 0;
     width: 100%;
     height: 100%; 
+    pointer-events: none;
     z-index: -1;
 }
 
@@ -125,8 +126,9 @@
     position: absolute;
     width: 526.56px;
     height: 759px;
-    top: 60vh;
+    top: 0%;
     left: -5%;
+    transform: translateY(75%);
     z-index: 0;
 }
 
@@ -256,7 +258,7 @@
     width: 1525px;
     height: 952.81px;
     top: -20%;
-    opacity: 0.5;
+    opacity: 0.25;
     z-index: -5;
 }
 
@@ -267,4 +269,16 @@
     top: 30%;
     height: 439px;
     transform: rotate(26deg);
+}
+
+.blur-1-gallery {
+    position: absolute;
+    width: 244px;
+    height: 231px;
+    top: 30%;
+    left: 80%;
+    background: #660E72;
+    border-radius: 50%; 
+    filter: blur(250px);
+    z-index: -1 !important; 
 }

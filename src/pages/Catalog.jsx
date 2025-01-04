@@ -33,7 +33,7 @@ function Catalog() {
     { id: 8, title: 'Серьги готические',   price: 899, oldPrice: 1200,   image: '/images/cloak.png' },
     { id: 9, title: 'Бандана "Череп"',    price: 499,                    image: '/images/cloak.png' },
     { id: 11, title: 'Бандана "Череп"',    price: 499,                    image: '/images/cloak.png' },
-    { id: 12, title: 'Бандана "Череп"',    price: 499,                    image: '/images/cloak.png' },
+    { id: 13, title: 'Бандана "Череп"',    price: 499,                    image: '/images/cloak.png' },
   ]
 
   const productGroups = chunkArray(products, 7)
@@ -126,6 +126,7 @@ function Catalog() {
         </div>
         <div className="gallery-photos">
           <div className='grid-container-background'>
+            <div className='blur-1-gallery'></div>
             <img src={sparks_1} alt="" className='sparks-1-gallery' />
             <img src={background_2} alt="" className='background-1-gallery' />
           </div>

@@ -24,6 +24,11 @@
     z-index: -111; 
 }
 
+.footer--catalog::before {
+    background-image: url('../../public/images/footer_catalog.jpg');
+    opacity: 0.4;
+}
+
 .contacts {
     font-size: 14px;
     font-weight: 400;
