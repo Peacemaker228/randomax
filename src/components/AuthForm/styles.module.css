@@ -1,0 +1,45 @@
+.auth {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.submitBtn {
+    border-radius: 20px;
+    width: 100%;
+    background: white;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+.input {
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 100%;
+    padding: 6px 8px;
+}
+
+.modeBtn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.form {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.error {
+    font-size: 12px;
+}
