@@ -1,6 +1,6 @@
 .modal-overlay {
     position: fixed;
-    top: 110%;
+    top: 100%;
     left: 0;
     width: 100%;
     height: 100%;
@@ -9,7 +9,7 @@
     align-items: center;
     z-index: 1000;
     align-items: flex-start;
-  }
+}
   
 .modal-content {
     background-color: #fff; 
@@ -38,26 +38,9 @@
     justify-content: space-between;
 }
 
-@media (max-width: 768px) {
-    .modal-overlay {
-        top: 150%;
-        padding-top: 5%;
-
-    }
-    
-}
-
-.search-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #fff;
-}
-
 .search-input {
     border: none;
-    width: calc(100% - 40px);
+    width: calc(100%);
     height: 100%;
     padding: 18px;
     border-radius: 20px;
@@ -72,27 +55,41 @@
     caret-color: black;
 }
 
+.divider {
+    width: 100%; 
+    height: 1px;
+    padding-bottom: -1px;
+    background-color: black;
+}
+
 .search-input:focus {
     outline: none;
 }
 
 .search-results {
     color: black;
+}
+
+.loading {
     padding-left: 20px;
 }
 
-.search-result-image {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
+.search-result-image-container {
+    width: 100px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     border-radius: 5px;
-    margin-right: 15px;
+    padding-right: 10px;
 }
 
+.search-result-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .error {
     color: red;
@@ -100,13 +97,22 @@
 }
 
 .search-result-item {
+    padding: 0 20px;
     display: flex;
-    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.search-result-item:hover {
+    background-color: #f7f7f7;
+    cursor: pointer;
+    transition: 0.4s;
 }
 
 .search-result-details {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     justify-content: space-between;
     padding-right: 2%;
@@ -121,4 +127,24 @@
 .search-result-price {
     font-size: 18px;
     color: #000000;
+}
+
+@media (max-width: 768px) {
+    .modal-overlay {
+        top: 125%;
+        padding-top: 5%;
+
+    }
+    
+    .search-result-details {
+        flex-direction: column;
+    }
+    
+    .search-result-image {
+        object-fit: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
 }

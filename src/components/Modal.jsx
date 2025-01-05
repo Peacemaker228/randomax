@@ -84,19 +84,22 @@ function Modal({ isOpen, onClose, children }) {
             &times;
           </button>
         </div>
+        <div className="divider"></div>
         <div className="search-results">
-          {loading && <p>Загрузка...</p>}
+          {loading && <p className="loading">Загрузка...</p>}
           {error && <p className="error">{error}</p>}
           {!loading && !error && results.length === 0 && query && (
-            <p>Ничего не найдено.</p>
+            <p className="loading">Ничего не найдено.</p>
           )}
           {!loading && !error && results.map((item) => (
             <Link to={`/product/${item.id}`} key={item.id} className="search-result-item" onClick={onClose}>
-              <img
-                src={item.images.find(img => img.is_main)?.image || 'placeholder.png'}
-                alt={item.images.find(img => img.is_main)?.alt_text || item.name}
-                className="search-result-image"
-              />
+              <div className='search-result-image-container '>
+                <img
+                  src={item.images.find(img => img.is_main)?.image || 'placeholder.png'}
+                  alt={item.images.find(img => img.is_main)?.alt_text || item.name}
+                  className="search-result-image"
+                />
+              </div>
               <div className="search-result-details">
                 <p className="search-result-name">{item.name}</p>
                 <p className="search-result-price">
