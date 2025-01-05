@@ -49,15 +49,26 @@ function Catalog() {
   const productGroups = chunkArray(displayedProducts, 7)
 
   const images = [
-    {id: 1, image: '/images/cloak.png'  },
-    {id: 2, image: '/images/cloak.png'  },
-    {id: 3, image: '/images/cloak.png'  },
-    {id: 4, image: '/images/cloak.png'  },
-    {id: 5, image: '/images/cloak.png'  },
-    {id: 6, image: '/images/cloak.png'  },
-    {id: 7, image: '/images/cloak.png'  },
-
+    {id: 1, image: '/images/gallery/dabc5be043b6ff966b4ce08c0178cffc.png'},
+    {id: 2, image: '/images/gallery/cba81199a0cab188042ec1d350b4ea49.jpg'  },
+    {id: 3, image: '/images/gallery/7a0f14d7a437ef2291720e66d1025bf3.jpg'  },
+    {id: 5, image: '/images/gallery/cba81199a0cab188042ec1d350b4ea49.jpg'  },
+    {id: 4, image: '/images/gallery/b4cc1466e876e25c7e7c1af16c19bb32.jpg'  },
+    {id: 6, image: '/images/gallery/694f0b5d451b5e3ec977d590b1ae0beb.png'  },
+    {id: 7, image: '/images/gallery/457e076459f4c3ded807d4e956be56c8.jpg'  },
   ]
+
+  const imagesMobile = [
+    {id: 1, image: '/images/gallery/dabc5be043b6ff966b4ce08c0178cffc.png'},
+    {id: 2, image: '/images/gallery/cba81199a0cab188042ec1d350b4ea49.jpg'  },
+    {id: 5, image: '/images/gallery/cba81199a0cab188042ec1d350b4ea49.jpg'  },
+    {id: 4, image: '/images/gallery/b4cc1466e876e25c7e7c1af16c19bb32.jpg'  },
+    {id: 3, image: '/images/gallery/7a0f14d7a437ef2291720e66d1025bf3.jpg'  },
+    {id: 6, image: '/images/gallery/694f0b5d451b5e3ec977d590b1ae0beb.png'  },
+    {id: 7, image: '/images/gallery/457e076459f4c3ded807d4e956be56c8.jpg'  },
+  ]
+
+  const currentImages = isMobile ? imagesMobile : images;
 
   const handleViewAll = () => {
     setShowAll(true);
@@ -154,7 +165,7 @@ function Catalog() {
             <img src={sparks_1} alt="" className='sparks-1-gallery' />
             <img src={background_2} alt="" className='background-1-gallery' />
           </div>
-          {images.map((image, index) => (
+          {currentImages.map((image, index) => (
             <div key={image.id} className={`photo-${index}`}> 
               <PhotoCard
                 key={image.id}
