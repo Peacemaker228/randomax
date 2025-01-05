@@ -1,4 +1,4 @@
-import { NavLink, useLocation} from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import './Header.css'
 import { useState } from 'react';
 import Modal from './Modal';
@@ -24,20 +24,12 @@ function Header() {
   return (
     <header className={`header ${isCatalogPage ? 'header--catalog' : ''}`}>
       <nav className="nav-left">
-        <NavLink 
-          to="/catalog" 
-          className={({ isActive }) => 
-            isActive ? 'nav-link catalog-link active' : 'nav-link catalog-link'
-          }
-        >
+        <NavLink
+          to="/catalog"
+          className={({ isActive }) => (isActive ? 'nav-link catalog-link active' : 'nav-link catalog-link')}>
           КАТАЛОГ
         </NavLink>
-        <NavLink 
-          to="/about" 
-          className={({ isActive }) => 
-            isActive ? 'nav-link active' : 'nav-link'
-          }
-        >
+        <NavLink to="/about" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
           О НАС
         </NavLink>
       </nav>
@@ -65,14 +57,11 @@ function Header() {
         >
           <img src="/user.svg"/>
         </NavLink>
-        <NavLink 
-          to="/cart" 
-          className={({ isActive }) => 
-            isActive ? 'icon-link active' : 'icon-link'
-          } 
-          aria-label="Корзина"
-        >
-          <img src="/cart.svg"/>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => (isActive ? 'icon-link active' : 'icon-link')}
+          aria-label="Корзина">
+          <img src="/cart.svg" />
         </NavLink>
       </div>
 
@@ -82,5 +71,3 @@ function Header() {
     </header>
   )
 }
-
-export default Header
