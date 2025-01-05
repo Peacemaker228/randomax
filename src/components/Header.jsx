@@ -1,10 +1,25 @@
 import { NavLink, useLocation} from 'react-router-dom'
 import './Header.css'
+import { useState } from 'react';
+import Modal from './Modal';
+
 
 function Header() {
   const location = useLocation();
   
   const isCatalogPage = location.pathname === '/catalog';
+
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+
+  const openSearchModal = () => {
+    setIsSearchModalOpen(true);
+  };
+
+  const closeSearchModal = () => {
+    setIsSearchModalOpen(false);
+  };
+
+
 
   return (
     <header className={`header ${isCatalogPage ? 'header--catalog' : ''}`}>
@@ -34,15 +49,13 @@ function Header() {
       </div>
 
       <div className="nav-right">
-        <NavLink 
-          to="/search" 
-          className={({ isActive }) => 
-            isActive ? 'icon-link active' : 'icon-link'
-          } 
+        <button  
+          className="icon-link search-button" 
           aria-label="Поиск"
+          onClick={openSearchModal}
         >
-          <img src="/search.svg"/>
-        </NavLink>
+        <img src="/search.svg"/>
+        </button >
         <NavLink 
           to="/login" 
           className={({ isActive }) => 
@@ -62,6 +75,10 @@ function Header() {
           <img src="/cart.svg"/>
         </NavLink>
       </div>
+
+      <Modal isOpen={isSearchModalOpen} onClose={closeSearchModal}>
+      </Modal>
+
     </header>
   )
 }

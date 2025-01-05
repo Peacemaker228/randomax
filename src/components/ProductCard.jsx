@@ -14,7 +14,7 @@ function ProductCard({ id, title, price, oldPrice, image }) {
         </div>
       </div>
       <div className='product-buttons'>
-        <Link to={`/products/${id}`} className='button'>ПОДРОБНЕЕ О ТОВАРЕ</Link>
+        <Link to={`/product/${id}`} className='button'>ПОДРОБНЕЕ О ТОВАРЕ</Link>
       </div>
     </div>
   )
