@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useEffect, useLayoutEffect, useState } from 'react'
+import { createContext, FC, ReactNode, useLayoutEffect, useState } from 'react'
 import { authService } from '../services/auth.service'
 import { toast } from 'react-toastify'
 import { IAuthFormValues } from '../components/AuthForm/types'

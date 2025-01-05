@@ -1,28 +1,20 @@
-import { NavLink, useLocation} from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import './Header.css'
 
-function Header() {
-  const location = useLocation();
-  
-  const isCatalogPage = location.pathname === '/catalog';
+export const Header = () => {
+  const location = useLocation()
+
+  const isCatalogPage = location.pathname === '/catalog'
 
   return (
     <header className={`header ${isCatalogPage ? 'header--catalog' : ''}`}>
       <nav className="nav-left">
-        <NavLink 
-          to="/catalog" 
-          className={({ isActive }) => 
-            isActive ? 'nav-link catalog-link active' : 'nav-link catalog-link'
-          }
-        >
+        <NavLink
+          to="/catalog"
+          className={({ isActive }) => (isActive ? 'nav-link catalog-link active' : 'nav-link catalog-link')}>
           КАТАЛОГ
         </NavLink>
-        <NavLink 
-          to="/about" 
-          className={({ isActive }) => 
-            isActive ? 'nav-link active' : 'nav-link'
-          }
-        >
+        <NavLink to="/about" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
           О НАС
         </NavLink>
       </nav>
@@ -34,36 +26,25 @@ function Header() {
       </div>
 
       <div className="nav-right">
-        <NavLink 
-          to="/search" 
-          className={({ isActive }) => 
-            isActive ? 'icon-link active' : 'icon-link'
-          } 
-          aria-label="Поиск"
-        >
-          <img src="/search.svg"/>
+        <NavLink
+          to="/search"
+          className={({ isActive }) => (isActive ? 'icon-link active' : 'icon-link')}
+          aria-label="Поиск">
+          <img src="/search.svg" />
         </NavLink>
-        <NavLink 
-          to="/login" 
-          className={({ isActive }) => 
-            isActive ? 'icon-link active' : 'icon-link'
-          } 
-          aria-label="Пользователь"
-        >
-          <img src="/user.svg"/>
+        <NavLink
+          to="/login"
+          className={({ isActive }) => (isActive ? 'icon-link active' : 'icon-link')}
+          aria-label="Пользователь">
+          <img src="/user.svg" />
         </NavLink>
-        <NavLink 
-          to="/cart" 
-          className={({ isActive }) => 
-            isActive ? 'icon-link active' : 'icon-link'
-          } 
-          aria-label="Корзина"
-        >
-          <img src="/cart.svg"/>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => (isActive ? 'icon-link active' : 'icon-link')}
+          aria-label="Корзина">
+          <img src="/cart.svg" />
         </NavLink>
       </div>
     </header>
   )
 }
-
-export default Header
