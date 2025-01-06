@@ -1,0 +1,28 @@
+.submitBtn, .exitBtn {
+    border-radius: 20px;
+    background: white;
+    padding: 6px 8px;
+    cursor: pointer;
+    box-sizing: border-box;
+
+}
+
+.exitBtn {
+        margin-top: 46px;
+}
+
+.input {
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 6px 8px;
+}
+
+.error {
+    font-size: 12px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

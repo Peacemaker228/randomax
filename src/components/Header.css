@@ -6,7 +6,6 @@
     padding: 10px 80px;
     position: sticky;
     top: 0;
-    z-index: 1000;
     backdrop-filter: blur(15px);
     height: 75px;
     z-index: 111;
@@ -22,7 +21,6 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     top: 0;
-    z-index: 1000;
     backdrop-filter: blur(15px);
     height: 75px;
     z-index: 111;
@@ -121,5 +119,9 @@
     padding: 0;
     cursor: pointer;
     font-size: 1.5rem;
+
+    &:last-child {
+        margin-left: 12px;
+    }
 }
 

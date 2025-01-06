@@ -1,4 +1,5 @@
 import axios, { AxiosError, CreateAxiosDefaults } from 'axios'
+import { tokenManage } from '../utils/tokenManage'
 
 const options: CreateAxiosDefaults = {
   baseURL: import.meta.env.VITE_BASE_API,
@@ -11,10 +12,10 @@ const axiosPrivateInstance = axios.create(options)
 
 axiosPrivateInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token')
+    const { accessToken } = tokenManage()
 
-    if (token && config?.headers) {
-      config.headers.Authorization = `Bearer ${token}`
+    if (accessToken && config?.headers) {
+      config.headers.Authorization = `JWT ${accessToken}`
     }
 
     return config

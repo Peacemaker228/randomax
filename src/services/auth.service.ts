@@ -27,7 +27,7 @@ export const authService = {
     return response
   },
 
-  async logout() {
+  logout() {
     const { removeToken } = tokenManage()
 
     removeToken()

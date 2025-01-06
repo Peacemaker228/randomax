@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useLayoutEffect, useState } from 'react'
+import { createContext, FC, PropsWithChildren, useLayoutEffect, useState } from 'react'
 import { authService } from '../services/auth.service'
 import { toast } from 'react-toastify'
 import { IAuthFormValues } from '../components/AuthForm/types'
@@ -13,10 +13,10 @@ export interface IAuthContext {
 
 export const AuthContext = createContext<IAuthContext | undefined>(undefined)
 
-export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-
+export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const { accessToken } = tokenManage()
+
+  const [isAuthenticated, setIsAuthenticated] = useState(!!accessToken)
 
   useLayoutEffect(() => {
     if (accessToken) {
@@ -46,8 +46,8 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }
   }
 
-  const logout = async () => {
-    await authService.logout()
+  const logout = () => {
+    authService.logout()
 
     setIsAuthenticated(false)
   }

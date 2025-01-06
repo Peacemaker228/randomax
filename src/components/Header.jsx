@@ -1,25 +1,33 @@
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import './Header.css'
-import { useState } from 'react';
-import Modal from './Modal';
-
+import { useState } from 'react'
+import Modal from './Modal'
+import { useAuth } from '../hooks/useAuth'
 
 function Header() {
-  const location = useLocation();
-  
-  const isCatalogPage = location.pathname === '/catalog';
+  const location = useLocation()
 
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const navigate = useNavigate()
+
+  const { logout } = useAuth()
+
+  const isCatalogPage = location.pathname === '/catalog'
+
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
 
   const openSearchModal = () => {
-    setIsSearchModalOpen(true);
-  };
+    setIsSearchModalOpen(true)
+  }
 
   const closeSearchModal = () => {
-    setIsSearchModalOpen(false);
-  };
+    setIsSearchModalOpen(false)
+  }
 
+  const handleExit = () => {
+    logout()
 
+    navigate('/')
+  }
 
   return (
     <header className={`header ${isCatalogPage ? 'header--catalog' : ''}`}>
@@ -41,21 +49,14 @@ function Header() {
       </div>
 
       <div className="nav-right">
-        <button  
-          className="icon-link search-button" 
-          aria-label="Поиск"
-          onClick={openSearchModal}
-        >
-        <img src="/search.svg"/>
-        </button >
-        <NavLink 
-          to="/login" 
-          className={({ isActive }) => 
-            isActive ? 'icon-link active' : 'icon-link'
-          } 
-          aria-label="Пользователь"
-        >
-          <img src="/user.svg"/>
+        <button className="icon-link search-button" aria-label="Поиск" onClick={openSearchModal}>
+          <img src="/search.svg" />
+        </button>
+        <NavLink
+          to="/account"
+          className={({ isActive }) => (isActive ? 'icon-link active' : 'icon-link')}
+          aria-label="Пользователь">
+          <img src="/user.svg" />
         </NavLink>
         <NavLink
           to="/cart"
@@ -63,11 +64,13 @@ function Header() {
           aria-label="Корзина">
           <img src="/cart.svg" />
         </NavLink>
+
+        <button className="search-button" onClick={handleExit}>
+          <img src="/exit-icon.svg" alt="exit-icon" />
+        </button>
       </div>
 
-      <Modal isOpen={isSearchModalOpen} onClose={closeSearchModal}>
-      </Modal>
-
+      <Modal isOpen={isSearchModalOpen} onClose={closeSearchModal}></Modal>
     </header>
   )
 }
