@@ -1,0 +1,259 @@
+:root {
+    --line-height: 40px;
+    --orange: #F37022;
+}
+
+.wrapper {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100px; /* Ширина градиента */
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.9));
+    pointer-events: none; /* Чтобы градиент не блокировал взаимодействие */
+    opacity: 0; /* По умолчанию градиент скрыт */
+    transition: opacity 0.3s ease; /* Плавное появление */
+}
+
+.wrapper.gradientActive::after {
+    opacity: 1; /* Показываем градиент */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 744px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+.textContainer {
+    margin: 90px 0 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+
+    .title {
+        text-align: center;
+        font-weight: 600;
+        font-size: 60px;
+        line-height: 66px;
+        background: rgb(230,230,230);
+        background: linear-gradient(90deg, rgba(230,230,230,1) 0%, rgba(150,150,152,1) 100%);
+        background-clip: text;
+        color: transparent;
+    }
+
+    .description {
+        font-weight: 400;
+        font-size: 28px;
+        color: #C3C0C2;
+        line-height: var(--line-height);
+    }
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    .description {
+        font-weight: 400;
+        font-size: 14px;
+        color: #797578;
+    }
+
+    .btn {
+        outline: none;
+        cursor: pointer;
+        width: 353px;
+        padding: 22px 0;
+        border: 3px solid var(--orange);
+        color: white;
+        border-radius: 166px;
+        font-weight: 600;
+        font-size: 28px;
+        background: transparent;
+
+        &:disabled {
+            cursor: auto;
+            opacity: 0.2;
+        }
+    }
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    gap: 24px;
+    margin-top: 38px;
+    width: 100%;
+    max-width: 353px;
+
+    .checkboxContainer {
+        display: flex;
+        align-items: center;
+
+        > input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            margin-right: 0.6em;
+            border: 1px solid var(--orange);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+         > input[type="checkbox"]:checked {
+            position: relative;
+             background-color: var(--orange);
+        }
+
+         > input[type="checkbox"]:checked::before {
+             content: "";
+             display: block;
+             width: 16px;
+             height: 16px;
+             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' stroke='%23ffffff'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cpath d='M4 12.6111L8.92308 17.5L20 6.5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+             background-repeat: no-repeat;
+             background-position: center;
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+         }
+
+        > label {
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 16px;
+            color: white;
+            display: block;
+        }
+    }
+
+    .inputContainer {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+
+        > .hr {
+            margin: 20px 0;
+            padding: 0;
+            height: 0;
+            border: none;
+            border-top: 2px solid var(--orange);
+            width: 20px;
+        }
+
+        > input {
+            border: 1px solid var(--orange);
+            border-radius: 10px;
+            background-color: #111111;
+            width: 153px;
+            height: 44px;
+            padding: 0 16px;
+            color: #CECECE;
+            font-size: 14px;
+        }
+    }
+}
+
+.space {
+    height: var(--line-height);
+}
+
+.errorText {
+    text-align: center;
+    color: #cb3f3f;
+}
+
+.number {
+    transition: all 0.5s ease-in-out;
+    background: rgb(230,230,230);
+    background: linear-gradient(90deg, rgba(230,230,230,1) 0%, rgba(188,188,190,1) 100%);
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+}
+
+.main {
+    font-size: 150px;
+    line-height: 100%;
+}
+
+.small {
+    font-size: 70px;
+    opacity: 0.6;
+    transform: scale(0.8);
+    line-height: 60px;
+}
+
+.numberContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100px;
+}
+
+.oldNumbers {
+    position: absolute;
+    left: 0;
+    flex-direction: column;
+    margin-left: 100%;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn {
+        gap: 8px;
+        color: white;
+        display: flex;
+        align-items: center;
+        background: inherit;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: translateY(20%);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(-10%);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.spinning .number {
+    animation: spin 0.1s ease-in-out infinite;
+}
