@@ -8,22 +8,21 @@ type TState = 'default' | 'settings' | 'start'
 
 export const MainPage = () => {
   const [state, setState] = useState<TState>('default')
-  const [generatedNumbers, setGeneratedNumbers] = useState<number[]>([])
+  const [rolling, setRolling] = useState(false)
   const [errorText, setErrorText] = useState('')
-  const [animate, setAnimate] = useState(false)
+  const [generatedNumbers, setGeneratedNumbers] = useState<number[]>([])
+  const [currentNumber, setCurrentNumber] = useState<number | null>(null)
 
   const { inputState, handleChange } = useInputState()
-
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const sexRef = useRef<HTMLDivElement>(null)
   const numberRef = useRef<HTMLDivElement | null>(null)
 
   const handleGenerateNumber = () => {
+    if (rolling) return
+
     const { from, to, repeat } = inputState
 
     try {
-      setAnimate(false)
-
       const fromNum = Number(from)
       const toNum = Number(to)
 
@@ -35,13 +34,23 @@ export const MainPage = () => {
         throw new Error('Минимальное значение должно быть меньше максимального')
       }
 
-      const newNumber = generateNumber(fromNum, toNum, repeat, generatedNumbers)
+      const newFinalNumber = generateNumber(fromNum, toNum, repeat, generatedNumbers)
 
-      setTimeout(() => {
-        setAnimate(true)
+      setRolling(true)
+      let tempNumber = fromNum
+
+      const interval = setInterval(() => {
+        tempNumber = Math.floor(Math.random() * 99)
+        setCurrentNumber(tempNumber)
       }, 100)
 
-      setGeneratedNumbers((prev) => [newNumber, ...prev])
+      setTimeout(() => {
+        clearInterval(interval)
+        setGeneratedNumbers([newFinalNumber, ...generatedNumbers])
+        setCurrentNumber(newFinalNumber)
+        setRolling(false)
+      }, 1500)
+
       setErrorText('')
     } catch (error: any) {
       setErrorText(error.message)
@@ -52,6 +61,7 @@ export const MainPage = () => {
     setGeneratedNumbers([])
     setErrorText('')
     setState('start')
+    setCurrentNumber(null)
   }
 
   useEffect(() => {
@@ -72,27 +82,23 @@ export const MainPage = () => {
   }
 
   return (
-    <div ref={wrapperRef} className={`${styles.wrapper}`}>
+    <div ref={wrapperRef} className={styles.wrapper}>
       <div className={styles.container}>
         <Axenix />
         <div className={styles.textContainer}>
-          {!generatedNumbers.length && <h2 className={styles.title}>{getTitle()}</h2>}
-          {!!generatedNumbers.length && (
-            <div ref={numberRef} className={styles.numberContainer}>
-              <span className={`${styles.number} ${styles.main} ${animate ? styles.numberSlide : ''}`}>
-                {generatedNumbers[0]}
-              </span>
+          {!generatedNumbers.length && !currentNumber && <h2 className={styles.title}>{getTitle()}</h2>}
+          {(!!generatedNumbers.length || currentNumber) && (
+            <div ref={numberRef} className={`${styles.numberContainer} ${rolling ? styles.spinning : ''}`}>
+              <span className={`${styles.number} ${styles.main}`}>{currentNumber}</span>
             </div>
           )}
           {!!generatedNumbers.length && (
-            <div ref={sexRef} className={`${styles.numberContainer} ${styles.oldNumbers}`}>
-              {generatedNumbers.slice(1, 6).map((num, index) => {
-                return (
-                  <span key={index} className={`${styles.number} ${styles.small}`}>
-                    {num}
-                  </span>
-                )
-              })}
+            <div className={`${styles.numberContainer} ${styles.oldNumbers}`}>
+              {generatedNumbers.slice(1, 6).map((num, index) => (
+                <span key={index} className={`${styles.number} ${styles.small}`}>
+                  {num}
+                </span>
+              ))}
             </div>
           )}
           {state === 'default' && <p className={styles.description}>Генератор случайных чисел</p>}
