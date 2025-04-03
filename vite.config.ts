@@ -6,6 +6,8 @@ export default defineConfig({
   base: '/randomax/',
   build: {
     target: 'esnext',
+    outDir: 'dist',
+    assetsDir: 'assets',
   },
   server: {
     port: 3000,
