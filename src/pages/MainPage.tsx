@@ -1,94 +1,28 @@
-import { useEffect, useRef, useState } from 'react'
-import { useInputState } from '../hooks'
-import { generateNumber } from '../utils'
-import { Axenix, DefaultContent, OtherContent } from '../components'
+import { useRef } from 'react'
+import { useInputState, useRoulette } from '../hooks'
+import { Axenix, Controller } from '../components'
 import styles from './styles.module.css'
 
-type TState = 'default' | 'settings' | 'start'
-
 export const MainPage = () => {
-  const [state, setState] = useState<TState>('default')
-  const [rolling, setRolling] = useState(false)
-  const [errorText, setErrorText] = useState('')
-  const [generatedNumbers, setGeneratedNumbers] = useState<number[]>([])
-  const [currentNumber, setCurrentNumber] = useState<number | null>(null)
-
   const { inputState, handleChange } = useInputState()
+  const { isRolling, errorText, generatedNumbers, currentNumber, startRolling, stopRolling, reset } =
+    useRoulette(inputState)
+
   const wrapperRef = useRef<HTMLDivElement>(null)
   const numberRef = useRef<HTMLDivElement | null>(null)
-
-  const handleGenerateNumber = () => {
-    if (rolling) return
-
-    const { from, to, repeat } = inputState
-
-    try {
-      const fromNum = Number(from)
-      const toNum = Number(to)
-
-      if (!fromNum || !toNum) {
-        throw new Error('Введите оба значения!')
-      }
-
-      if (fromNum >= toNum) {
-        throw new Error('Минимальное значение должно быть меньше максимального')
-      }
-
-      const newFinalNumber = generateNumber(fromNum, toNum, repeat, generatedNumbers)
-
-      setRolling(true)
-      let tempNumber = fromNum
-
-      const interval = setInterval(() => {
-        tempNumber = Math.floor(Math.random() * 99)
-        setCurrentNumber(tempNumber)
-      }, 100)
-
-      setTimeout(() => {
-        clearInterval(interval)
-        setGeneratedNumbers([newFinalNumber, ...generatedNumbers])
-        setCurrentNumber(newFinalNumber)
-        setRolling(false)
-      }, 1500)
-
-      setErrorText('')
-    } catch (error: any) {
-      setErrorText(error.message)
-    }
-  }
-
-  const handleReset = () => {
-    setGeneratedNumbers([])
-    setErrorText('')
-    setState('start')
-    setCurrentNumber(null)
-  }
-
-  useEffect(() => {
-    if (inputState.from && inputState.to) {
-      setState('start')
-    }
-  }, [inputState])
-
-  const getTitle = () => {
-    switch (state) {
-      case 'settings':
-        return 'Выберите настройки для продолжения'
-      case 'start':
-        return 'На старт!'
-      default:
-        return 'Добро пожаловать в randomizer'
-    }
-  }
 
   return (
     <div ref={wrapperRef} className={styles.wrapper}>
       <div className={styles.container}>
         <Axenix />
         <div className={styles.textContainer}>
-          {!generatedNumbers.length && !currentNumber && <h2 className={styles.title}>{getTitle()}</h2>}
+          {!generatedNumbers.length && !currentNumber && !isRolling && (
+            <h2 className={styles.title}>Генератор случайных чисел</h2>
+          )}
           {(!!generatedNumbers.length || currentNumber) && (
-            <div ref={numberRef} className={`${styles.numberContainer} ${rolling ? styles.spinning : ''}`}>
+            <div
+              ref={numberRef}
+              className={`${styles.numberContainer} ${isRolling ? styles.spinning : styles.stopSpin}`}>
               <span className={`${styles.number} ${styles.main}`}>{currentNumber}</span>
             </div>
           )}
@@ -101,20 +35,15 @@ export const MainPage = () => {
               ))}
             </div>
           )}
-          {state === 'default' && <p className={styles.description}>Генератор случайных чисел</p>}
-          {state !== 'default' && <div className={styles.space} />}
         </div>
-        {state === 'default' ? (
-          <DefaultContent onStart={() => setState('settings')} />
-        ) : (
-          <OtherContent
-            inputState={inputState}
-            onGenerate={handleGenerateNumber}
-            onChange={handleChange}
-            errorText={errorText}
-            onReset={handleReset}
-          />
-        )}
+        <Controller
+          inputState={inputState}
+          onGenerate={isRolling ? stopRolling : startRolling}
+          onChange={handleChange}
+          errorText={errorText}
+          onReset={reset}
+          isRolling={isRolling}
+        />
       </div>
     </div>
   )

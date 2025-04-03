@@ -1,3 +1,2 @@
-export * from './DefaultContent'
-export * from './OtherContent'
+export * from './Controller'
 export * from './Axenix'

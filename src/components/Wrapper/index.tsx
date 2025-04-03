@@ -1,4 +1,4 @@
-import styles from '../pages/styles.module.css'
+import styles from './styles.module.css'
 
 export const Wrapper = () => {
   return (
