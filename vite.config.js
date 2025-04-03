@@ -1,19 +1,18 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-export default defineConfig(({ command, mode }) => {
- return {
-   plugins: [react()],
-   server: {
-     port: 3000,
-     host: true,
-     watch: {
+export default defineConfig({
+  plugins: [react()],
+  base: '/randomax/',
+  server: {
+    port: 3000,
+    host: true,
+    watch: {
       usePolling: true,
-     },
-     esbuild: {
-      target: "esnext",
-      platform: "linux",
+    },
+    esbuild: {
+      target: 'esnext',
+      platform: 'linux',
     },
   },
- };
-});
+})
