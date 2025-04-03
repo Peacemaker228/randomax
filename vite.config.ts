@@ -5,14 +5,13 @@ export default defineConfig({
   plugins: [react()],
   base: '/',
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    target: 'esnext',
   },
-  // server: {
-  //   port: 3000,
-  //   host: true,
-  //   watch: {
-  //     usePolling: true,
-  //   },
-  // },
+  server: {
+    port: 3000,
+    host: true,
+    watch: {
+      usePolling: true,
+    },
+  },
 })
