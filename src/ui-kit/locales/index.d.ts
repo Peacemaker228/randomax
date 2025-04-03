@@ -1,1 +1,0 @@
-export { globalLocale } from './locale';
