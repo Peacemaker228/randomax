@@ -1,6 +1,6 @@
 {
-  "homepage": "https://peacemaker228.github.io/randomax",
   "name": "randomax",
+  "homepage": "https://Peacemaker228.github.io/randomax/",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -9,6 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
