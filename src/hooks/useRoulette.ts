@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { generateNumber } from '../utils'
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const useRoulette = (inputState: any) => {
   const [isRolling, setIsRolling] = useState(false)
   const [errorText, setErrorText] = useState('')
@@ -8,7 +8,7 @@ export const useRoulette = (inputState: any) => {
   const [currentNumber, setCurrentNumber] = useState<number | null>(null)
   const [finalNumber, setFinalNumber] = useState<number | null>(null)
 
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const intervalRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const startRolling = () => {
     if (isRolling) return
