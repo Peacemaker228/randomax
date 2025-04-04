@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/randomax',
   build: {
     target: 'esnext',
     outDir: 'dist',
